@@ -8,6 +8,7 @@ import com.tenjava.entries.mamifsidtect.t3.listeners.RandomCommonBlockDrops;
 import com.tenjava.entries.mamifsidtect.t3.listeners.RandomCommonMobDrops;
 import com.tenjava.entries.mamifsidtect.t3.listeners.RandomNegativePotionEffects;
 import com.tenjava.entries.mamifsidtect.t3.listeners.RandomPositivePotionEffects;
+import com.tenjava.entries.mamifsidtect.t3.listeners.RandomPunchingBlockListener;
 import com.tenjava.entries.mamifsidtect.t3.listeners.RandomRareBlockDrops;
 import com.tenjava.entries.mamifsidtect.t3.listeners.RandomRareMobDrops;
 
@@ -22,6 +23,7 @@ public class TenJava extends JavaPlugin {
 		pm.registerEvents(new RandomCommonBlockDrops(), this);
 		pm.registerEvents(new RandomNegativePotionEffects(), this);
 		pm.registerEvents(new RandomPositivePotionEffects(), this);
+		pm.registerEvents(new RandomPunchingBlockListener(), this);
 		
 		getLogger().info("TenJava plugin for mamifsidtect is loaded!");
 	}
