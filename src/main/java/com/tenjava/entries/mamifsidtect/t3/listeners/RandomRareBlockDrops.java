@@ -5,6 +5,7 @@ import java.util.Random;
 import org.bukkit.ChatColor;
 import org.bukkit.Color;
 import org.bukkit.FireworkEffect;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
@@ -26,22 +27,20 @@ public class RandomRareBlockDrops implements Listener {
 		Player p = event.getPlayer();
 		Block b = event.getBlock();
 		if (b.getType() == Material.DIAMOND_ORE) {
-			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
-				Random r = new Random();
-				Integer chance = r.nextInt(100) - 3;
-				if (chance >= 80) {
+			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
+				if (new Random().nextInt(100) -2 >= 80) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.DIAMOND));
 				
-				} else if (chance >= 81 && chance <= 95) {
+				} else if (new Random().nextInt(100) -2 >= 81 && new Random().nextInt(100) -2 <= 95) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.DIAMOND, 2));
-					playFirework(p);
+					playFirework(b.getLocation());
 				
-				} else if (chance >= 96 && chance <= 100) {
+				} else if (new Random().nextInt(100) -2 >= 96 && new Random().nextInt(100) -2 <= 100) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.DIAMOND, 5));
-					playFirework(p);
+					playFirework(b.getLocation());
 					Zombie zombie = (Zombie) b.getWorld().spawnEntity(p.getLocation(), EntityType.ZOMBIE); {
 						zombie.setBaby(true);
 						zombie.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 15000, 2));
@@ -56,7 +55,39 @@ public class RandomRareBlockDrops implements Listener {
 		}
 	}
 	
-	public void playFirework(Player player) {
+	@EventHandler
+	public void onPlayerGoldOreBreak(BlockBreakEvent event) {
+		Player p = event.getPlayer();
+		Block b = event.getBlock();
+		if (b.getType() == Material.GOLD_ORE) {
+			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
+				event.setCancelled(true);
+				b.setType(Material.AIR);
+				
+				if (new Random().nextInt(100) -2 >= 85) {
+					b.getDrops().add(new ItemStack(Material.GOLD_ORE));
+				
+				} else if (new Random().nextInt(100) -2 >= 86 && new Random().nextInt(100) -2 <= 97) {
+					b.getDrops().add(new ItemStack(Material.GOLD_ORE, 2));
+					playFirework(b.getLocation());
+				
+				} else if (new Random().nextInt(100) -2 >= 98 && new Random().nextInt(100) -2 <= 100) {
+					b.getDrops().add(new ItemStack(Material.GOLD_ORE, 5));
+					playFirework(b.getLocation());
+					Zombie zombie = (Zombie) b.getWorld().spawnEntity(p.getLocation(), EntityType.ZOMBIE); {
+						zombie.setBaby(true);
+						zombie.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 15000, 2));
+						zombie.setCustomName(ChatColor.GOLD + "Gold Guard");
+						zombie.getEquipment().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
+						zombie.getEquipment().setItemInHand(new ItemStack(Material.IRON_AXE));
+						zombie.setCustomNameVisible(true);						
+					}
+				}
+			}
+		}
+	}
+	
+	public void playFirework(Location loc) {
 		Color color = null;
 		Random randomColor = new Random();
 		Integer fireworkColor = randomColor.nextInt(10) + 1;
@@ -92,7 +123,7 @@ public class RandomRareBlockDrops implements Listener {
 			color = Color.RED;
 		}
 		
-		Firework fw = (Firework) player.getWorld().spawnEntity(player.getLocation(), EntityType.FIREWORK);
+		Firework fw = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK);
 		FireworkMeta fwmeta = fw.getFireworkMeta();
 		FireworkEffect.Builder builder = FireworkEffect.builder();
 		builder.withTrail();
