@@ -28,7 +28,7 @@ public class RandomRareBlockDrops implements Listener {
 		Block b = event.getBlock();
 		if (b.getType() == Material.DIAMOND_ORE) {
 			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
-				if (new Random().nextInt(100) -2 >= 80) {
+				if (new Random().nextInt(100) -2 <= 80) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.DIAMOND));
 				
@@ -62,7 +62,7 @@ public class RandomRareBlockDrops implements Listener {
 		if (b.getType() == Material.GOLD_ORE) {
 			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
 				
-				if (new Random().nextInt(100) -2 >= 80) {
+				if (new Random().nextInt(100) -2 <= 80) {
 					b.getDrops().add(new ItemStack(Material.GOLD_ORE));
 				
 				} else if (new Random().nextInt(100) -2 >= 81 && new Random().nextInt(100) -2 <= 94) {
@@ -91,7 +91,7 @@ public class RandomRareBlockDrops implements Listener {
 		Block b = event.getBlock();
 		if (b.getType() == Material.EMERALD_ORE) {
 			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
-				if (new Random().nextInt(100) -2 >= 70) {
+				if (new Random().nextInt(100) -2 <= 70) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.EMERALD));
 					playFirework(b.getLocation());
