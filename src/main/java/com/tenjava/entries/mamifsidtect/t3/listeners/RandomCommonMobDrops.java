@@ -25,20 +25,20 @@ public class RandomCommonMobDrops implements Listener {
 	public void onZombieDeath(EntityDeathEvent event) {
 		if (event.getEntity() instanceof Zombie) {
 			if (event.getEntity().getKiller() instanceof Player) {
-				if (new Random().nextInt(100) + 1 <= 90) {
+				if (new Random().nextInt(100) + 1 <= 80) {
 					ArrayList<ItemStack> newDrops = new ArrayList<ItemStack>();
 					newDrops.add(new ItemStack(Material.ROTTEN_FLESH, 3));
 					event.getDrops().clear();
 					event.getDrops().addAll(newDrops);
 					
-				} else if (new Random().nextInt(100) + 1 >= 91 && new Random().nextInt(100) + 1 <= 96) {
+				} else if (new Random().nextInt(100) + 1 >= 81 && new Random().nextInt(100) + 1 <= 90) {
 					ArrayList<ItemStack> newDrops = new ArrayList<ItemStack>();
 					newDrops.add(new ItemStack(Material.BLAZE_ROD, 1));
 					newDrops.add(new ItemStack(Material.ROTTEN_FLESH, 3));
 					event.getDrops().clear();
 					event.getDrops().addAll(newDrops);
 					
-				} else if (new Random().nextInt(100) + 1 >= 97 && new Random().nextInt(100) + 1 <= 100) {
+				} else if (new Random().nextInt(100) + 1 >= 91 && new Random().nextInt(100) + 1 <= 100) {
 					ArrayList<ItemStack> newDrops = new ArrayList<ItemStack>();
 					newDrops.add(new ItemStack(Material.ROTTEN_FLESH, 3));
 					newDrops.add(new ItemStack(Material.BLAZE_ROD, 1));
@@ -55,19 +55,19 @@ public class RandomCommonMobDrops implements Listener {
 	public void onSkeletonDeath(EntityDeathEvent event) {
 		if (event.getEntity() instanceof Skeleton) {
 			if (event.getEntity().getKiller() instanceof Player) {
-				if (new Random().nextInt(100) <= 20) {
+				if (new Random().nextInt(100) <= 70) {
 					ArrayList<ItemStack> newDrops = new ArrayList<ItemStack>();
 					newDrops.add(new ItemStack(Material.BONE, 2));
 					event.getDrops().clear();
 					event.getDrops().addAll(newDrops);
-				} else if (new Random().nextInt(100) + 1 >= 21 && new Random().nextInt(100) + 1 <= 40) {
+				} else if (new Random().nextInt(100) + 1 >= 71 && new Random().nextInt(100) + 1 <= 85) {
 					ArrayList<ItemStack> newDrops = new ArrayList<ItemStack>();
 					newDrops.add(new ItemStack(Material.BONE, 2));
 					newDrops.add(new ItemStack(Material.BOW, 1));
 					newDrops.add(new ItemStack(Material.ARROW, 4));
 					event.getDrops().clear();
 					event.getDrops().addAll(newDrops);
-				} else if (new Random().nextInt(100) + 1 >= 41 && new Random().nextInt(100) + 1 <= 100) {
+				} else if (new Random().nextInt(100) + 1 >= 86 && new Random().nextInt(100) + 1 <= 100) {
 					ArrayList<ItemStack> newDrops = new ArrayList<ItemStack>();
 					newDrops.add(new ItemStack(Material.BONE, 2));
 					newDrops.add(new ItemStack(Material.BOW, 1));
@@ -89,17 +89,17 @@ public class RandomCommonMobDrops implements Listener {
 	public void onCreeperDeath(EntityDeathEvent event) {
 		if (event.getEntity() instanceof Creeper) {
 			if (event.getEntity().getKiller() instanceof Player) {
-				if (new Random().nextInt(100) + 1 <= 90) {
+				if (new Random().nextInt(100) + 1 <= 75) {
 					ArrayList<ItemStack> newDrops = new ArrayList<ItemStack>();
 					newDrops.add(new ItemStack(Material.SULPHUR, 2));
 					event.getDrops().clear();
 					event.getDrops().addAll(newDrops);
-				} else if (new Random().nextInt(100) + 1 >= 91 && new Random().nextInt(100) + 1 <= 96) {
+				} else if (new Random().nextInt(100) + 1 >= 76 && new Random().nextInt(100) + 1 <= 85) {
 					ArrayList<ItemStack> newDrops = new ArrayList<ItemStack>();
 					newDrops.add(new ItemStack(Material.SULPHUR, 4));
 					event.getDrops().clear();
 					event.getDrops().addAll(newDrops);
-				} else if (new Random().nextInt(100) + 1 >= 97 && new Random().nextInt(100) + 1 <= 100) {
+				} else if (new Random().nextInt(100) + 1 >= 86 && new Random().nextInt(100) + 1 <= 100) {
 					ArrayList<ItemStack> newDrops = new ArrayList<ItemStack>();
 					newDrops.add(new ItemStack(Material.SULPHUR, 7));
 					event.getDrops().clear();
@@ -119,11 +119,11 @@ public class RandomCommonMobDrops implements Listener {
 				Player killer = (Player) event.getEntity().getKiller();
 				if (new Random().nextInt(100) + 1 <= 90) {
 					event.getDrops().clear();
-					killer.giveExp(event.getEntity().getTotalExperience());
+					killer.giveExp(event.getEntity().getTotalExperience()/8);
 				} else if (new Random().nextInt(100) + 1 >= 91 && new Random().nextInt(100) + 1 <= 96) {
-					killer.giveExp(event.getEntity().getTotalExperience());
+					killer.giveExp(event.getEntity().getTotalExperience()/4);
 				} else if (new Random().nextInt(100) + 1 >= 97 && new Random().nextInt(100) + 1 <= 100) {
-					
+					killer.giveExp(event.getEntity().getTotalExperience());
 				}
 			}
 		}
