@@ -44,6 +44,7 @@ public class RandomCommonBlockDrops implements Listener {
 			}
 		}
 	}
+	
 	@EventHandler
 	public void onGrassDestroy(BlockBreakEvent event) {
 		Block b = event.getBlock();
