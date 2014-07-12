@@ -52,8 +52,10 @@ public class RandomPositivePotionEffects implements Listener {
 			amplifier = 3;
 		}
 		
-		if (p.getActivePotionEffects().isEmpty()) {
-			p.addPotionEffect(new PotionEffect(pType, 400, amplifier));
+		if (potionType <= 10 && potionType >= 1) {
+			if (p.getActivePotionEffects().isEmpty()) {
+				p.addPotionEffect(new PotionEffect(pType, 400, amplifier));
+			}	
 		}
 	}
 }

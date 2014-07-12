@@ -28,7 +28,7 @@ public class RandomNegativePotionEffects implements Listener {
 			amplifier = 2;
 		} else if (potionType == 3) {
 			pType = PotionEffectType.HARM;
-			amplifier = 2;
+			amplifier = 1;
 		} else if (potionType == 4) {
 			pType = PotionEffectType.HUNGER;
 			amplifier = 1;
@@ -52,8 +52,10 @@ public class RandomNegativePotionEffects implements Listener {
 			amplifier = 1;
 		}
 		
-		if (p.getActivePotionEffects().isEmpty()) {
-			p.addPotionEffect(new PotionEffect(pType, 400, amplifier));
+		if (potionType <= 10 && potionType >= 1) {
+			if (p.getActivePotionEffects().isEmpty()) {
+				p.addPotionEffect(new PotionEffect(pType, 400, amplifier));
+			}	
 		}
 	}
 }
