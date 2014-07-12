@@ -61,18 +61,16 @@ public class RandomRareBlockDrops implements Listener {
 		Block b = event.getBlock();
 		if (b.getType() == Material.GOLD_ORE) {
 			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
-				event.setCancelled(true);
-				b.setType(Material.AIR);
 				
-				if (new Random().nextInt(100) -2 >= 85) {
+				if (new Random().nextInt(100) -2 >= 80) {
 					b.getDrops().add(new ItemStack(Material.GOLD_ORE));
 				
-				} else if (new Random().nextInt(100) -2 >= 86 && new Random().nextInt(100) -2 <= 97) {
-					b.getDrops().add(new ItemStack(Material.GOLD_ORE, 2));
+				} else if (new Random().nextInt(100) -2 >= 81 && new Random().nextInt(100) -2 <= 94) {
+					b.getDrops().add(new ItemStack(Material.GOLD_ORE, 1));
 					playFirework(b.getLocation());
 				
-				} else if (new Random().nextInt(100) -2 >= 98 && new Random().nextInt(100) -2 <= 100) {
-					b.getDrops().add(new ItemStack(Material.GOLD_ORE, 5));
+				} else if (new Random().nextInt(100) -2 >= 95 && new Random().nextInt(100) -2 <= 100) {
+					b.getDrops().add(new ItemStack(Material.GOLD_ORE, 4));
 					playFirework(b.getLocation());
 					Zombie zombie = (Zombie) b.getWorld().spawnEntity(p.getLocation(), EntityType.ZOMBIE); {
 						zombie.setBaby(true);
@@ -81,6 +79,37 @@ public class RandomRareBlockDrops implements Listener {
 						zombie.getEquipment().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
 						zombie.getEquipment().setItemInHand(new ItemStack(Material.IRON_AXE));
 						zombie.setCustomNameVisible(true);						
+					}
+				}
+			}
+		}
+	}
+	
+	@EventHandler
+	public void onPlayerEmeraldOreBreak(BlockBreakEvent event) {
+		Player p = event.getPlayer();
+		Block b = event.getBlock();
+		if (b.getType() == Material.EMERALD_ORE) {
+			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
+				if (new Random().nextInt(100) -2 >= 70) {
+					b.getDrops().clear();
+					b.getDrops().add(new ItemStack(Material.EMERALD));
+					playFirework(b.getLocation());
+				} else if (new Random().nextInt(100) -2 >= 71 && new Random().nextInt(100) -2 <= 91) {
+					b.getDrops().clear();
+					b.getDrops().add(new ItemStack(Material.EMERALD, 2));
+					playFirework(b.getLocation());
+				} else if (new Random().nextInt(100) -2 >= 92 && new Random().nextInt(100) -2 <= 100) {
+					b.getDrops().clear();
+					b.getDrops().add(new ItemStack(Material.EMERALD, 5));
+					playFirework(b.getLocation());
+					Zombie zombie = (Zombie) b.getWorld().spawnEntity(p.getLocation(), EntityType.ZOMBIE); {
+						zombie.setBaby(true);
+						zombie.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 15000, 2));
+						zombie.setCustomName(ChatColor.GREEN + "Emerald Guard");
+						zombie.getEquipment().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));
+						zombie.getEquipment().setItemInHand(new ItemStack(Material.STONE_AXE));
+						zombie.setCustomNameVisible(true);
 					}
 				}
 			}
