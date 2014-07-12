@@ -15,7 +15,7 @@ public class RandomRareBlockDrops implements Listener {
 		Block b = event.getBlock();
 		if (b.getType() == Material.DIAMOND_ORE) {
 			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE) {
-				
+				//do something here, please work at commit
 			}
 		}
 	}
