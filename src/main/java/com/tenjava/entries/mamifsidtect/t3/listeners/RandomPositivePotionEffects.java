@@ -17,7 +17,7 @@ public class RandomPositivePotionEffects implements Listener {
 		
 		PotionEffectType pType = null;
 		Random randomPotion = new Random();
-		Integer potionType = randomPotion.nextInt() + 1;
+		Integer potionType = randomPotion.nextInt(1000000) + 1;
 		
 		if (potionType == 1) {
 			pType = PotionEffectType.DAMAGE_RESISTANCE;
