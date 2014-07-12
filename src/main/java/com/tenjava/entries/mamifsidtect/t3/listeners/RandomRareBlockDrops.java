@@ -28,16 +28,16 @@ public class RandomRareBlockDrops implements Listener {
 		Block b = event.getBlock();
 		if (b.getType() == Material.DIAMOND_ORE) {
 			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
-				if (new Random().nextInt(100) -2 <= 80) {
+				if (new Random().nextInt(100) + 1 <= 80) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.DIAMOND));
 				
-				} else if (new Random().nextInt(100) -2 >= 81 && new Random().nextInt(100) -2 <= 95) {
+				} else if (new Random().nextInt(100) + 1 >= 81 && new Random().nextInt(100) +1 <= 95) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.DIAMOND, 2));
 					playFirework(b.getLocation());
 				
-				} else if (new Random().nextInt(100) -2 >= 96 && new Random().nextInt(100) -2 <= 100) {
+				} else if (new Random().nextInt(100) +1 >= 96 && new Random().nextInt(100) +1 <= 100) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.DIAMOND, 5));
 					playFirework(b.getLocation());
@@ -62,14 +62,14 @@ public class RandomRareBlockDrops implements Listener {
 		if (b.getType() == Material.GOLD_ORE) {
 			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
 				
-				if (new Random().nextInt(100) -2 <= 80) {
+				if (new Random().nextInt(100) +1 <= 80) {
 					b.getDrops().add(new ItemStack(Material.GOLD_ORE));
 				
-				} else if (new Random().nextInt(100) -2 >= 81 && new Random().nextInt(100) -2 <= 94) {
+				} else if (new Random().nextInt(100) +1 >= 81 && new Random().nextInt(100) +1 <= 94) {
 					b.getDrops().add(new ItemStack(Material.GOLD_ORE, 1));
 					playFirework(b.getLocation());
 				
-				} else if (new Random().nextInt(100) -2 >= 95 && new Random().nextInt(100) -2 <= 100) {
+				} else if (new Random().nextInt(100) +1 >= 95 && new Random().nextInt(100) +1 <= 100) {
 					b.getDrops().add(new ItemStack(Material.GOLD_ORE, 4));
 					playFirework(b.getLocation());
 					Zombie zombie = (Zombie) b.getWorld().spawnEntity(p.getLocation(), EntityType.ZOMBIE); {
@@ -91,15 +91,15 @@ public class RandomRareBlockDrops implements Listener {
 		Block b = event.getBlock();
 		if (b.getType() == Material.EMERALD_ORE) {
 			if (p.getItemInHand().getType() == Material.DIAMOND_PICKAXE || p.getItemInHand().getType() == Material.IRON_PICKAXE) {
-				if (new Random().nextInt(100) -2 <= 70) {
+				if (new Random().nextInt(100) +1 <= 70) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.EMERALD));
 					playFirework(b.getLocation());
-				} else if (new Random().nextInt(100) -2 >= 71 && new Random().nextInt(100) -2 <= 91) {
+				} else if (new Random().nextInt(100) +1 >= 71 && new Random().nextInt(100) +1 <= 91) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.EMERALD, 2));
 					playFirework(b.getLocation());
-				} else if (new Random().nextInt(100) -2 >= 92 && new Random().nextInt(100) -2 <= 100) {
+				} else if (new Random().nextInt(100) +1 >= 92 && new Random().nextInt(100) +1 <= 100) {
 					b.getDrops().clear();
 					b.getDrops().add(new ItemStack(Material.EMERALD, 5));
 					playFirework(b.getLocation());
